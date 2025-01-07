@@ -1,0 +1,90 @@
+    <p>{{productoForm.status}}</p>
+
+<form [formGroup]="productoForm" class="mx-5 mt-5" (ngSubmit)="onSubmit()">
+    <div class="form-floating mb-3">
+        <input
+            formControlName="nombre"
+            type="text"
+            class="form-control"
+            name="formNombre"
+            id="formNombre"
+            placeholder=""
+        />
+        <label for="formNombre">Nombre</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input
+            formControlName="identificador"
+            type="text"
+            class="form-control"
+            name="formIdentificador"
+            id="formIdentificador"
+            placeholder=""
+        />
+        <label for="formIdentificador">Identificador</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input
+            formControlName="cantidad"
+            type="number"
+            class="form-control"
+            name="formCantidad"
+            id="formCantidad"
+            placeholder=""
+        />
+        <label for="formCantidad">Cantidad</label>
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Unidad de medida</label>
+        <select
+            class="form-select form-select-lg"
+            formControlName="unidadMedida"
+            id="unidadMedida"
+        >
+            <option selected value="1">Pieza</option>
+            <option value="2">Metro</option>
+
+        </select>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input
+            formControlName="costo"
+            type="number"
+            class="form-control"
+            name="formCosto"
+            id="formCosto"
+            placeholder=""
+        />
+        <label for="formCosto">Costo</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+        <input
+        formControlName="precioAlPublico"
+            type="number"
+            class="form-control"
+            name="formPrecioAlPublico"
+            id="formPrecioAlPublico"
+            placeholder=""
+        />
+        <label for="formPrecioAlPublico">Precio al publico</label>
+    </div>
+
+    <div class="text-center">
+
+        <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!productoForm.valid"
+        >
+        Guardar
+        </button>
+    </div>
+     
+    
+
+</form>

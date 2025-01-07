@@ -1,0 +1,22 @@
+<div class="row mt-4 ms-4 me-4">
+
+    @for (producto of productos; track $index) {
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center">{{producto.nombre}}</h3>
+                    <p class="card-text text-center">Identificador: {{producto.identificador}}</p>
+                    <p class="card-text text-center">Cantidad: {{producto.cantidad}} @if (producto.unidadMedida==1) {pz} @else {mt}</p>
+                    <p class="card-text text-center">Costo: {{producto.costo}}</p>
+                    <p class="card-text text-center">Precio al publico: {{producto.precioAlPublico}}</p>
+                    <div class="d-flex justify-content-evenly">
+                        <a href="#" class="btn btn-primary">Editar</a>
+                        <a href="#" class="btn btn-primary">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
