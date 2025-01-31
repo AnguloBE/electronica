@@ -1,6 +1,6 @@
-    <p>{{productoForm.status}}</p>
+    <p>{{formProducto.status}}</p>
 
-<form [formGroup]="productoForm" class="mx-5 mt-5" (ngSubmit)="onSubmit()">
+<form [formGroup]="formProducto" class="mx-5 mt-5" (ngSubmit)="onSubmit()">
     <div class="form-floating mb-3">
         <input
             formControlName="nombre"
@@ -38,17 +38,31 @@
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">Unidad de medida</label>
+        <label for="unidadMedida" class="form-label">Unidad de medida</label>
         <select
             class="form-select form-select-lg"
             formControlName="unidadMedida"
             id="unidadMedida"
         >
-            <option selected value="1">Pieza</option>
+            <option value="1">Pieza</option>
             <option value="2">Metro</option>
 
         </select>
     </div>
+
+    <div class="mb-3">
+        <label for="ubicacion" class="form-label">Ubicacion</label>
+        <select
+            class="form-select form-select-lg"
+            formControlName="ubicacion"
+            id="ubicacion"
+        >
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+    </div>
+    
 
     <div class="form-floating mb-3">
         <input
@@ -79,7 +93,7 @@
         <button
         type="submit"
         class="btn btn-primary"
-        [disabled]="!productoForm.valid"
+        [disabled]="!formProducto.valid"
         >
         Guardar
         </button>

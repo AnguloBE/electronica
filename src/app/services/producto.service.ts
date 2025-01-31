@@ -11,21 +11,21 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = "http://localhost:8080/productos";
+  baseUrl: string = "http://localhost:8080/producto";
 
 
   getProductos():Observable<Producto[]> {
 
     return this.http.get<any>(`${this.baseUrl}`).pipe(
-      map(response => response._embedded.productos)
+      map(response => response)
     );
 
   }
 
 
-  getProducto(productoId: number): Observable<Producto> {
+  getProducto(id: number): Observable<Producto> {
 
-    return this.http.get<Producto>(`${this.baseUrl}/${productoId}`);
+    return this.http.get<Producto>(`${this.baseUrl}/${id}`);
 
   }
 

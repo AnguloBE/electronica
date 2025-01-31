@@ -1,20 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { Producto } from '../../common/producto';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-ver-productos',
-  imports: [],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './ver-productos.component.html',
   styleUrl: './ver-productos.component.css'
 })
 export class VerProductosComponent {
 
-  texto: string ='que tranza';
-
   productos: Producto[] = [];
 
-  constructor(private productoServicio: ProductoService) {
+  private productoServicio = inject(ProductoService);
+
+  constructor() {
 
     this.obtenerProductos();
 

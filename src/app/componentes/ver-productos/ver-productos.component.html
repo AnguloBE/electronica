@@ -1,22 +1,39 @@
-<div class="row mt-4 ms-4 me-4">
 
-    @for (producto of productos; track $index) {
-        <div class="col-3">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title text-center">{{producto.nombre}}</h3>
-                    <p class="card-text text-center">Identificador: {{producto.identificador}}</p>
-                    <p class="card-text text-center">Cantidad: {{producto.cantidad}} @if (producto.unidadMedida==1) {pz} @else {mt}</p>
-                    <p class="card-text text-center">Costo: {{producto.costo}}</p>
-                    <p class="card-text text-center">Precio al publico: {{producto.precioAlPublico}}</p>
-                    <div class="d-flex justify-content-evenly">
-                        <a href="#" class="btn btn-primary">Editar</a>
-                        <a href="#" class="btn btn-primary">Eliminar</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
+<div
+    class="table-responsive"
+>
+    <table
+        class="table table-primary"
+    >
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Identificador</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">costo</th>
+                <th scope="col">Precio al publico</th>
+                <th scope="col">Ubicacion</th>
+                <th scope="col">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (producto of productos; track $index) {
 
+                <tr class="">
+                    <td scope="row">{{producto.productoId}}</td>
+                    <td >{{producto.nombre}}</td>
+                    <td>{{producto.identificador}}</td>
+                    <td>{{producto.cantidad}}</td>
+                    <td>{{producto.costo}}</td>
+                    <td>{{producto.precioAlPublico}}</td>
+                    <td>{{producto.ubicacion}}</td>
+                    <td><a href="#" class="btn btn-primary" [routerLink]="['/editar-producto', producto.productoId]" >Editar</a></td>
+                </tr>
+            }
+                
+        </tbody>
+    </table>
 </div>
+
 
