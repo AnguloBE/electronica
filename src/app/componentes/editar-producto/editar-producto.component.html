@@ -1,1 +1,152 @@
-<p>editar-producto works! </p>
+<form [formGroup]="formProducto" class="mx-5 mt-5" (ngSubmit)="onSubmit()">
+    <div class="form-floating mb-3">
+        <input
+            formControlName="nombre"
+            type="text"
+            class="form-control"
+            name="formNombre"
+            id="formNombre"
+            placeholder=""
+        />
+        <label for="formNombre">Nombre</label>
+        
+        @if (formProducto.controls.nombre.errors && formProducto.controls.nombre.touched) {
+            <div class="text-danger">El nombre es obligatorio</div>
+        }
+    </div>
+
+    <div class="form-floating mb-3">
+        <input
+            formControlName="identificador"
+            type="text"
+            class="form-control"
+            name="formIdentificador"
+            id="formIdentificador"
+            placeholder=""
+        />
+        <label for="formIdentificador">Identificador</label>
+
+        @if (formProducto.controls.identificador.errors?.['required'] && formProducto.controls.identificador.touched) {
+            <div class="text-danger">El identificador es obligatorio.</div>
+          }
+
+        @if (formProducto.controls.identificador.errors?.['minlength'] && formProducto.controls.identificador.touched) {
+            <div class="text-danger">El identificador debe tener por lo menos 3 caracteres</div>
+        }
+
+    </div>
+
+    <div class="form-floating mb-3">
+        <input
+            formControlName="cantidad"
+            type="number"
+            class="form-control"
+            name="formCantidad"
+            id="formCantidad"
+            placeholder=""
+        />
+        <label for="formCantidad">Cantidad</label>
+
+        @if (formProducto.controls.cantidad.errors?.['required'] && formProducto.controls.cantidad.touched) {
+            <div class="text-danger">La cantidad es obligatoria.</div>
+        }
+
+        @if (formProducto.controls.cantidad.errors?.['pattern'] && formProducto.controls.cantidad.touched) {
+            <div class="text-danger">Solo se aceptan numeros enteros</div>
+        }
+
+    </div>
+
+    <div class="mb-3">
+        <label for="unidadMedida" class="form-label">Unidad de medida</label>
+        <select
+            class="form-select form-select-lg"
+            formControlName="unidadMedida"
+            id="unidadMedida"
+        >
+            <option value="1">Pieza</option>
+            <option value="2">Metro</option>
+
+        </select>
+
+        @if (formProducto.controls.unidadMedida.errors?.['required'] && formProducto.controls.unidadMedida.touched) {
+            <div class="text-danger">Debes seleccionar una unidad de medida</div>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label for="ubicacion" class="form-label">Ubicacion</label>
+        <select
+            class="form-select form-select-lg"
+            formControlName="ubicacion"
+            id="ubicacion"
+        >
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+
+        @if (formProducto.controls.ubicacion.errors?.['required'] && formProducto.controls.ubicacion.touched) {
+            <div class="text-danger">Debes seleccionar una ubicacion</div>
+        }
+    </div>
+    
+
+    <div class="form-floating mb-3">
+        <input
+            formControlName="costo"
+            type="number"
+            class="form-control"
+            name="formCosto"
+            id="formCosto"
+            placeholder=""
+        />
+        <label for="formCosto">Costo</label>
+
+        @if (formProducto.controls.costo.errors?.['required'] && formProducto.controls.costo.touched) {
+            <div class="text-danger">El costo es obligatorio</div>
+        }
+        @if (formProducto.controls.costo.errors?.['pattern'] && formProducto.controls.costo.touched) {
+            <div class="text-danger">Tiene que ser un numero real y positivo</div>
+        }
+
+    </div>
+    
+    <div class="form-floating mb-3">
+        <input
+        formControlName="precioAlPublico"
+            type="number"
+            class="form-control"
+            name="formPrecioAlPublico"
+            id="formPrecioAlPublico"
+            placeholder=""
+        />
+        <label for="formPrecioAlPublico">Precio al publico</label>
+
+        @if (formProducto.controls.precioAlPublico.errors?.['required'] && formProducto.controls.precioAlPublico.touched) {
+            <div class="text-danger">El precio al publico es obligatorio</div>
+        }
+        @if (formProducto.controls.precioAlPublico.errors?.['pattern'] && formProducto.controls.precioAlPublico.touched) {
+            <div class="text-danger">Tiene que ser un numero real y positivo</div>
+        }
+
+    </div>
+
+    <div class="text-center">
+
+        <button class="btn btn-primary me-5" type="button" (click)="eliminar()">
+            Eliminar
+        </button>
+        
+        <button
+        type="submit"
+        class="btn btn-primary ms-5"
+        >
+        Guardar
+        </button>
+
+    </div>
+     
+    
+
+</form>
